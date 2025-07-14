@@ -1,1 +1,0 @@
-# manara-project-aws
