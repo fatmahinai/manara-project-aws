@@ -6,6 +6,9 @@ This project demonstrates how to deploy a secure, scalable, and highly available
 
 ## Architecture Overview
 
+![Architecture Diagram](lab-diagram-draw.io.jpg)
+
+
 A multi-tier web application architecture that uses:
 - Public subnets for the Load Balancer and Bastion Host
 - Private subnets for EC2 instances and the RDS database
