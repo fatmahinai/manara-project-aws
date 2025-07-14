@@ -1,10 +1,10 @@
-# 📘 Scalable Web Application with ALB and Auto Scaling
+# Scalable Web Application with ALB and Auto Scaling
 
 This project demonstrates how to deploy a secure, scalable, and highly available web application on AWS using core services such as EC2, Application Load Balancer (ALB), Auto Scaling Groups (ASG), IAM, RDS, Secrets Manager, and CloudWatch.
 
 ---
 
-## 🏗️ Architecture Overview
+## Architecture Overview
 
 A multi-tier web application architecture that uses:
 - Public subnets for the Load Balancer and Bastion Host
@@ -14,7 +14,7 @@ A multi-tier web application architecture that uses:
 
 ---
 
-## 📦 Key AWS Services Used
+## Key AWS Services Used
 
 | Service               | Purpose                                                                 |
 |----------------------|-------------------------------------------------------------------------|
@@ -29,26 +29,12 @@ A multi-tier web application architecture that uses:
 
 ---
 
-## 🔐 Security Considerations
+## Security Considerations
 
 - EC2 instances reside in **private subnets** for security.
 - Access to EC2 for management is done via a **bastion host** in a public subnet.
 - **IAM roles** are assigned to EC2 to allow secure access to **Secrets Manager** and **CloudWatch**.
 - Security Groups and NACLs restrict unauthorized traffic.
-
----
-
-## 📁 Folder Structure (Suggested)
-
-\`\`\`
-project-ec2-alb-asg/
-├── app/                      # Your web app code (HTML, PHP, etc.)
-├── scripts/                  # Setup scripts for EC2 User Data
-│   └── install_dependencies.sh
-├── templates/                # CloudFormation or Terraform templates
-├── architecture-diagram.png # High-level architecture diagram
-└── README.md
-\`\`\`
 
 ---
 
@@ -142,7 +128,7 @@ echo "DB_PASS=$PASSWORD" >> /var/www/html/.env
 
 ---
 
-## 🧪 Testing
+## Testing
 
 - Load the ALB DNS endpoint in your browser: \`http://<ALB-DNS-name>\`
 - Check scaling by simulating load
@@ -151,7 +137,7 @@ echo "DB_PASS=$PASSWORD" >> /var/www/html/.env
 
 ---
 
-## 📊 Cost Optimization Tips
+## Cost Optimization Tips
 
 - Use **Spot Instances** in ASG mixed policy (if app allows interruption)
 - Enable **Auto Stop** on idle RDS databases (dev only)
@@ -159,35 +145,7 @@ echo "DB_PASS=$PASSWORD" >> /var/www/html/.env
 
 ---
 
-## 🖼️ Architecture Diagram (Sample)
+## Architecture Diagram (Sample)
 
-\`\`\`
-+----------------------------+
-|        Route53 (DNS)       |
-+-------------+--------------+
-              |
-         +----v----+          
-         |  ALB    |
-         +----+----+
-              |
-     +--------+--------+
-     |                 |
-+----v----+       +----v----+
-|  EC2-1  |       |  EC2-2  |    <- In Auto Scaling Group (Private Subnets)
-+---------+       +---------+
-     |                 |
-     |         +-------+-------+
-     +-------->   Amazon RDS   |
-               +---------------+
-               |  SecretsMgr   |
-               +---------------+
-\`\`\`
 
----
 
-## 📌 Final Notes
-
-- Always use IAM roles over hardcoding credentials.
-- Secrets Manager helps rotate secrets automatically.
-- Use SSM Session Manager to access EC2 instances securely without SSH.
-- Set up CI/CD for automating deployments (e.g., using CodePipeline).
