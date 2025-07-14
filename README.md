@@ -143,9 +143,6 @@ echo "DB_PASS=$PASSWORD" >> /var/www/html/.env
 - Enable **Auto Stop** on idle RDS databases (dev only)
 - Monitor and remove unused resources
 
----
-
-## Architecture Diagram (Sample)
 
 
 
